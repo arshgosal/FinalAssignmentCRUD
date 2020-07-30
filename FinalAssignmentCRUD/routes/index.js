@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var userModel = require('../models/user');
+var articlesModel = require('../models/articles');
 var bcrypt = require('bcryptjs');
-
 /* GET home page. */
 router.get('/', function (req, res) {
     res.render('index', { user: req.user });
@@ -61,10 +61,6 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 
-router.get('/products', function (req, res) {
-    res.render('products');
-});
-
 /* GET insert page. */
 router.get('/insert', function (req, res) {
     res.render('insert');
@@ -73,38 +69,12 @@ router.get('/insert', function (req, res) {
 /* POST insert page */
 router.post('/insert', function (req, res) {
     //Create a new article using the Articles Model Schema
-    const item = new itemsModel({ name: req.body.name, description: req.body.description, price: req.body.price });
+    const article = new articlesModel({ name: req.body.name, description: req.body.description, price: req.body.price });
     //Insert article into DB
-    item.save(function (err) {
+    article.save(function (err) {
         console.log(err);
-        res.redirect('/products');
+        res.redirect('/users');
     });
 });
 
-/* GET update page */
-router.get('/update/:id', function (req, res) {
-    itemsModel.findById(req.params.id, function (err, foundArticle) {
-        if (err) console.log(err);
-        //Render update page with specific article
-        res.render('update', { article: foundItem })
-    })
-});
-
-/* POST update page */
-router.post('/update', function (req, res) {
-    console.log(req.body);
-    //Find and update by id
-    itemsModel.findByIdAndUpdate(req.body.id, { name: req.body.name, description: req.body.description, price: req.body.price }, function (err, model) {
-        console.log(err);
-        res.redirect('/products');
-    });
-});
-
-/* POST delete page */
-router.post('/delete/:id', function (req, res) {
-    //Find and delete article
-    itemsModel.findByIdAndDelete(req.params.id, function (err, model) {
-        res.redirect('/products');
-    });
-});
 module.exports = router;

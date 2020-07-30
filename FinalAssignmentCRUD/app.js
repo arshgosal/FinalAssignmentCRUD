@@ -13,7 +13,8 @@ var bcrypt = require('bcryptjs');
 const MongoClient = require('mongodb').MongoClient;
 const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
-const uri = "mongodb+srv://root:root@cluster0.xsgb6.mongodb.net/users?retryWrites=true&w=majority";
+const uri = "mongodb+srv://root:root@cluster0.84xj4.mongodb.net/users?retryWrites=true&w=majority";
+
 try {
     mongoose.connect(uri, { useNewUrlParser: true });
     var db = mongoose.connection;
@@ -26,12 +27,11 @@ try {
 } catch (err) {
     console.log("Error : " + err);
 }
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var userModel = require('./models/user');
-var app = express();
 
+var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -51,7 +51,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use('/', routes);
 app.use('/users', users);
 
@@ -127,3 +126,4 @@ app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function () {
     debug('Express server listening on port ' + server.address().port);
 });
+

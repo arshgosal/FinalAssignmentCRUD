@@ -30,7 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
-    <Content Include="models\items.js">
+    <Content Include="models\articles.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="models\user.js">
@@ -50,7 +50,7 @@
     <Content Include="views\error.pug" />
     <Content Include="views\users.pug" />
     <Content Include="views\register.pug" />
-    <Content Include="views\Login.pug">
+    <Content Include="views\login.pug">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>

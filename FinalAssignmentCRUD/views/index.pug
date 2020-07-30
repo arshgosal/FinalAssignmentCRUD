@@ -1,4 +1,18 @@
 extends layout
 
 block content
-  h1= MarketPlace
+    main
+          if (articles && articles.length)
+            table
+                thead
+                    th Name
+                    th Description
+                    th Price
+                tbody
+                    each article in articles
+                        tr
+                            td= article.name
+                            td= article.description
+                            td= article.price
+
+include footer

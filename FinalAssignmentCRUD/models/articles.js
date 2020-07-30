@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //Create Schema
-const ItemSchema = new mongoose.Schema({
-    title: {
+const ArticleSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true,
         trim: true
@@ -10,7 +10,7 @@ const ItemSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
-    ,
+    },
     price: {
         type: String,
         required: true,
@@ -18,5 +18,5 @@ const ItemSchema = new mongoose.Schema({
     }
 });
 //Create and instantiate model with schema
-const Items = mongoose.model("Items", ItemSchema);
-module.exports = Items;
+const Articles = mongoose.model("Articles", ArticleSchema);
+module.exports = Articles;

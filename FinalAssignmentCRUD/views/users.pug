@@ -5,16 +5,18 @@ block content
     h1 you forgot to Login
   else
     main
-        if(articles && articles.length)
+          if (articles && articles.length)
             table
                 thead
-                    th Id
-                    th Users
+                    th Name
+                    th Description
+                    th Price
                 tbody
                     each article in articles
                         tr
-                            td= article._id
-                            td= article.username
+                            td= article.name
+                            td= article.description
+                            td= article.price
     
 
   block content
