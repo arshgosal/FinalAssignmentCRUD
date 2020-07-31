@@ -36,19 +36,21 @@
     <Content Include="models\user.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\images\bg.png" />
     <Content Include="routes\index.js" />
     <Content Include="routes\users.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
+    <Content Include="views\header.pug" />
     <Content Include="views\footer.pug" />
     <Content Include="views\insert.pug" />
+    <Content Include="views\delete.pug" />
+    <Content Include="views\logout.pug" />
     <Content Include="views\update.pug" />
-    <Content Include="views\products.pug" />
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
-    <Content Include="views\users.pug" />
     <Content Include="views\register.pug" />
     <Content Include="views\login.pug">
       <SubType>Code</SubType>

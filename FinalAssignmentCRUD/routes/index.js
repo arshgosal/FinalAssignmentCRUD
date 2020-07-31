@@ -5,25 +5,14 @@ var passport = require('passport');
 var userModel = require('../models/user');
 var articlesModel = require('../models/articles');
 var bcrypt = require('bcryptjs');
-/* GET home page. */
-router.get('/', function (req, res) {
-    res.render('index', { user: req.user });
-});
 
 /*POST for login*/
 //Try to login with passport
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/users',
+    successRedirect: '/',
     failureRedirect: '/login',
     failureMessage: 'Invalid Login'
 }));
-
-/*Logout*/
-router.get('/logout', function (req, res) {
-    req.session.destroy(function (err) {
-        res.redirect('/login');
-    });
-});
 
 /*POST for register*/
 router.post('/register', function (req, res) {
@@ -51,19 +40,19 @@ router.post('/register', function (req, res) {
     })
 });
 
-/*GET for register*/
-router.get('/register', function (req, res) {
-    res.render('register');
-});
-
-/*GET for login*/
+/* GET login page. */
 router.get('/login', function (req, res) {
-    res.render('login');
+    res.render('login', { title: 'Login' });
 });
 
-/* GET insert page. */
+/* GET Register page. */
+router.get('/Register', function (req, res) {
+    res.render('Register', { title: 'Register' });
+});
+
+/* GET create page. */
 router.get('/insert', function (req, res) {
-    res.render('insert');
+    res.render('insert', { user: req.user });
 });
 
 /* POST insert page */
@@ -73,7 +62,49 @@ router.post('/insert', function (req, res) {
     //Insert article into DB
     article.save(function (err) {
         console.log(err);
-        res.redirect('/users');
+        res.redirect('/');
+    });
+});
+
+/* GET read page. */
+router.get('/', function (req, res) {
+    try {
+        //Retrieve all articles if there is any 
+        articlesModel.find({}, function (err, foundArticles) {
+            console.log(err);
+            console.log(foundArticles);
+            //Pass found articles from server to pug file
+            res.render('index', { user: req.user, articles: foundArticles });
+        });
+    } catch (err) {
+        console.log(err);
+        res.render('login', { title: 'Login' });
+    }
+});
+
+router.get('/update/:id', function (req, res) {
+    articlesModel.findById(req.params.id, function (err, foundArticle) {
+        if (err) console.log(err);
+        //Render update page with specific article
+        res.render('update', { article: foundArticle })
+    })
+});
+
+/* POST update page */
+router.post('/update', function (req, res) {
+    console.log(req.body);
+    //Find and update by id
+    articlesModel.findByIdAndUpdate(req.body.id, { name: req.body.name, description: req.body.description, price: req.body.price }, function (err, model) {
+        console.log(err);
+        res.redirect('/');
+    });
+});
+
+/* POST delete page */
+router.post('/delete/:id', function (req, res) {
+    //Find and delete article
+    articlesModel.findByIdAndDelete(req.params.id, function (err, model) {
+        res.redirect('/');
     });
 });
 
