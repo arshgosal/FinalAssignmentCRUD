@@ -55,6 +55,12 @@ router.get('/insert', function (req, res) {
     res.render('insert', { user: req.user });
 });
 
+router.get('/update', function (req, res) {
+    res.render('update', { user: req.user });
+});
+
+
+
 /* POST insert page */
 router.post('/insert', function (req, res) {
     //Create a new article using the Articles Model Schema
@@ -96,7 +102,7 @@ router.post('/update', function (req, res) {
     //Find and update by id
     articlesModel.findByIdAndUpdate(req.body.id, { name: req.body.name, description: req.body.description, price: req.body.price }, function (err, model) {
         console.log(err);
-        res.redirect('/');
+        res.redirect('/index');
     });
 });
 

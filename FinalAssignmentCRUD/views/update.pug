@@ -7,13 +7,13 @@ block content
       form(method='POST' action='/update')
         div
             h2 Insert Title
-            input(type='text' name='name' value=item.name)
+            input(type= 'text' name= 'name' value= article.name)
         div
             h2 Description
-            input(type='text' name='description' value=item.description)
+            input(type= 'text' name= 'description' value= article.description)
         div
             h2 Price
-            input(type='text' name='description' value=item.price)
+            input(type= 'text' name= 'price' value= article.price)
         div
-            input(type='hidden' name='id' value=price.id)
-            button(type='submit' value='Submit') Submit
+            input(type= 'hidden' name= 'id' value= article.id)
+            button(type= 'submit' value= 'Submit') Submit
