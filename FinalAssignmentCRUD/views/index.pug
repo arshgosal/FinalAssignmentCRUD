@@ -1,7 +1,6 @@
 extends layout
 
 block content
-
     main
           if (articles && articles.length)
             table
@@ -19,7 +18,7 @@ block content
                             td 
                                 a(href='/update/'+article.id) Update
                             td
-                                form.deleteForm(id=article.id)
+                                form(method='POST' action='/delete/'+article.id)
                                     button(type='submit') Delete
-    script(src='/javascripts/delete.js')
+    
     include footer

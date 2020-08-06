@@ -13,10 +13,6 @@ body {
     position: relative;
 }
 
-a {
-    color: #00B7FF;
-}
-
 
 h1 {
     text-align: center;
@@ -28,18 +24,30 @@ header, footer {
     text-align: center;
 }
 
+
 nav a {
-    display: inline-block;
-    width: 60px;
-    background-color: white;
+    float: left;
+    color: black;
+    background-color: aqua;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
 nav a:hover {
-    background-color: #111;
+    background-color: #808080;
+    color: black;
+}
+
+nav a.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
 main {
     background-color: white;
+    padding-top: 70px;
 }
 
 button {

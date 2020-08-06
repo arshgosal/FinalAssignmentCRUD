@@ -1,2 +1,4 @@
 C:\Users\Arsh Gosal\source\repos\FinalAssignmentCRUD\FinalAssignmentCRUD\obj\Debug\FinalAssignmentCRUD.njsprojAssemblyReference.cache
 C:\Users\Arsh Gosal\source\repos\FinalAssignmentCRUD\FinalAssignmentCRUD\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Arsh Gosal\Desktop\Semester4\FinalAssignmentCRUD\FinalAssignmentCRUD\obj\Debug\FinalAssignmentCRUD.njsprojAssemblyReference.cache
+C:\Users\Arsh Gosal\Desktop\Semester4\FinalAssignmentCRUD\FinalAssignmentCRUD\bin\Microsoft.NodejsTools.WebRole.dll

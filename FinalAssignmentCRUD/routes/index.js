@@ -116,7 +116,7 @@ router.post('/update', function (req, res) {
 router.post('/delete/:id', function (req, res) {
     //Find and delete article
     articlesModel.findByIdAndDelete(req.params.id, function (err, model) {
-        res.send({"sucess":"Article deleted!"})
+        res.redirect('/')
     });
 });
 
