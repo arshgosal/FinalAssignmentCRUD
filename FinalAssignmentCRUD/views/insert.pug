@@ -1,11 +1,12 @@
 extends layout
 
 block content
+    //checking if user is logged in or not
     if(!user)
-        h1 you forgot to Login
+        h1 You have to login in order to insert data
     else
         h1 Insert Article below
-        //Insert form
+        //Insert form to insert data
         form(method='POST' action='/insert')
             div
                 h2 Insert Title

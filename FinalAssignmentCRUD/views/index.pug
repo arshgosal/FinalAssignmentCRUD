@@ -1,23 +1,25 @@
 extends layout
 
 block content
+    // checking using is statement that there are any articles in the server and if then displaying them at index page
+    //only users can see the link to update page and delete button
     main
+        
           if (articles && articles.length)
-            table
-                thead
-                    th Name
-                    th Description
-                    th Price
-                    th Update
-                tbody
-                    each article in articles
-                        tr
-                            td= article.name
-                            td= article.description
-                            td= article.price
-                            td 
+            section
+                each article in articles
+                    div
+                        if(!user)
+                            p= "Name of product: "+article.name
+                            p= "Description: "+article.description
+                            p= "Price: $"+article.price
+                        else
+                            p= "Name of product: "+article.name
+                            p= "Description: "+article.description
+                            p= "Price: $"+article.price
+                            p
                                 a(href='/update/'+article.id) Update
-                            td
+                            p
                                 form(method='POST' action='/delete/'+article.id)
                                     button(type='submit') Delete
     

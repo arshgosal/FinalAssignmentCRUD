@@ -93,7 +93,7 @@ router.post('/insert', function (req, res) {
     res.redirect('/');
 });
 
-
+/* GET update page */
 router.get('/update/:id', function (req, res) {
     articlesModel.findById(req.params.id, function (err, foundArticle) {
         if (err) console.log(err);

@@ -3,11 +3,14 @@ extends layout
 block content
     main
       h1 Register Page
+      //registering form
       form(method='POST' action='/register')
         fieldset
+            //getting username
             label(for='username') Username
             input#username(type='text' name='username')
         fieldset
+            //getting password
             label(for='password') Password
             input#password(type='password' name='password')
         input(type='submit' value='Register')

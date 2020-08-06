@@ -18,8 +18,7 @@ h1 {
     text-align: center;
 }
 
-
-header, footer {
+footer {
     background-color: white;
     text-align: center;
 }
@@ -47,19 +46,31 @@ nav a.active {
 
 main {
     background-color: white;
-    padding-top: 70px;
+    padding-top: 50px;
 }
 
 button {
-    background-color: aqua;
+    background-color: red;
     border: none;
-    color: white;
+    color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
+button:hover{
+    background-color:black;
+    color: white;
+}
 p{
     background-color: white
+}
+
+div{
+    background-color: aqua;
+}
+
+div p{
+    background-color: aqua;
 }

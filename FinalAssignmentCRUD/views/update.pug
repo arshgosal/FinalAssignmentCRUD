@@ -2,11 +2,12 @@ extends layout
 
 block content
     main
+        //checking if user is logged in or not
         if(!user)
-            h1 you forgot to Login
+            h1 You must login to Update any item
         else
             h1 Update Item below
-            //Insert form
+            //Update form
             form(method='POST' action='/update')
                 div
                     h2 Insert Title

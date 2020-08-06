@@ -37,9 +37,6 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\images\bg.png" />
-    <Content Include="public\javascripts\delete.js">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="routes\index.js" />
     <Content Include="routes\users.js" />
     <Content Include="package.json" />
