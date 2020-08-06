@@ -37,6 +37,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\images\bg.png" />
+    <Content Include="public\javascripts\delete.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="routes\index.js" />
     <Content Include="routes\users.js" />
     <Content Include="package.json" />
@@ -44,6 +47,7 @@
     <Content Include="README.md" />
     <Content Include="views\header.pug" />
     <Content Include="views\footer.pug" />
+    <Content Include="views\read.pug" />
     <Content Include="views\insert.pug" />
     <Content Include="views\delete.pug" />
     <Content Include="views\logout.pug" />

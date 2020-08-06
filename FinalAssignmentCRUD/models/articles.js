@@ -18,5 +18,5 @@ const ArticleSchema = new mongoose.Schema({
     }
 });
 //Create and instantiate model with schema
-const Users = mongoose.model("Articles", ArticleSchema);
-module.exports = Users;
+const Articles = mongoose.model("Articles", ArticleSchema);
+module.exports = Articles;

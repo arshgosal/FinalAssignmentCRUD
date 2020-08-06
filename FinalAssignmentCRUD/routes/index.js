@@ -40,6 +40,13 @@ router.post('/register', function (req, res) {
     })
 });
 
+/*Logout*/
+router.get('/logout', function (req, res) {
+    req.session.destroy(function (err) {
+        res.redirect('/login');
+    });
+});
+
 /* GET login page. */
 router.get('/login', function (req, res) {
     res.render('login', { title: 'Login' });
@@ -48,36 +55,13 @@ router.get('/login', function (req, res) {
 /* GET Register page. */
 router.get('/Register', function (req, res) {
     res.render('Register', { title: 'Register' });
-});
-
-/* GET create page. */
-router.get('/insert', function (req, res) {
-    res.render('insert', { user: req.user });
-});
-
-router.get('/update', function (req, res) {
-    res.render('update', { user: req.user });
-});
-
-
-
-/* POST insert page */
-router.post('/insert', function (req, res) {
-    //Create a new article using the Articles Model Schema
-    const article = new articlesModel({ name: req.body.name, description: req.body.description, price: req.body.price });
-    //Insert article into DB
-    article.save(function (err) {
-        console.log(err);
-        res.redirect('/');
-    });
-});
+}); 
 
 /* GET read page. */
 router.get('/', function (req, res) {
     try {
         //Retrieve all articles if there is any 
         articlesModel.find({}, function (err, foundArticles) {
-            console.log(err);
             console.log(foundArticles);
             //Pass found articles from server to pug file
             res.render('index', { user: req.user, articles: foundArticles });
@@ -88,11 +72,33 @@ router.get('/', function (req, res) {
     }
 });
 
+/* GET insert page. */
+router.get('/insert', function (req, res) {
+    res.render('insert', { user: req.user });
+});
+
+router.get('/update', function (req, res) {
+    res.render('update', { user: req.user });
+});
+
+
+/* POST insert page */
+router.post('/insert', function (req, res) {
+    //Create a new article using the Articles Model Schema
+    const article = new articlesModel({ name: req.body.name, description: req.body.description, price: req.body.price });
+    //Insert article into DB
+    article.save(function (err) {
+        console.log(err);
+    });
+    res.redirect('/');
+});
+
+
 router.get('/update/:id', function (req, res) {
     articlesModel.findById(req.params.id, function (err, foundArticle) {
         if (err) console.log(err);
         //Render update page with specific article
-        res.render('update', { article: foundArticle })
+        res.render('update', { user: req.user, article: foundArticle })
     })
 });
 
@@ -102,7 +108,7 @@ router.post('/update', function (req, res) {
     //Find and update by id
     articlesModel.findByIdAndUpdate(req.body.id, { name: req.body.name, description: req.body.description, price: req.body.price }, function (err, model) {
         console.log(err);
-        res.redirect('/index');
+        res.redirect('/');
     });
 });
 
@@ -110,7 +116,7 @@ router.post('/update', function (req, res) {
 router.post('/delete/:id', function (req, res) {
     //Find and delete article
     articlesModel.findByIdAndDelete(req.params.id, function (err, model) {
-        res.redirect('/');
+        res.send({"sucess":"Article deleted!"})
     });
 });
 

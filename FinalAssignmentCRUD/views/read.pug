@@ -9,17 +9,10 @@ block content
                     th Name
                     th Description
                     th Price
-                    th Update
                 tbody
                     each article in articles
                         tr
                             td= article.name
                             td= article.description
                             td= article.price
-                            td 
-                                a(href='/update/'+article.id) Update
-                            td
-                                form.deleteForm(id=article.id)
-                                    button(type='submit') Delete
-    script(src='/javascripts/delete.js')
     include footer
