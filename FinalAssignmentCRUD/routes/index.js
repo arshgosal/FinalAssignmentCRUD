@@ -5,6 +5,7 @@ var passport = require('passport');
 var userModel = require('../models/user');
 var articlesModel = require('../models/articles');
 var bcrypt = require('bcryptjs');
+var formidable = require('formidable');
 
 /*POST for login*/
 //Try to login with passport
@@ -117,6 +118,23 @@ router.post('/delete/:id', function (req, res) {
     //Find and delete article
     articlesModel.findByIdAndDelete(req.params.id, function (err, model) {
         res.redirect('/')
+    });
+});
+
+/* Get for search page */
+router.get('/search', function (req, res) {
+    res.render('search', { user: req.user });
+});
+
+/* Post for search */
+router.post('/search', function (req, res) {
+    var form = new formidable.IncomingForm();
+    var name = req.body.str;
+    articlesModel.find({ name: name }, function (err, foundArticles) {
+        console.log(err);
+        console.log(foundArticles);
+        //Passing found articles from server to search.pug file
+        res.render('search', { articles: foundArticles, user: req.user });
     });
 });
 

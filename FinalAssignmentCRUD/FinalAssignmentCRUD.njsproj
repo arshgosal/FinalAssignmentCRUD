@@ -43,6 +43,7 @@
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="views\footer.pug" />
+    <Content Include="views\search.pug" />
     <Content Include="views\insert.pug" />
     <Content Include="views\delete.pug" />
     <Content Include="views\logout.pug" />

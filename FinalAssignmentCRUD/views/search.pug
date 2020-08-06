@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    //getting name of item using input and looking for it using post method in server and displaying it
+    // checking using is statement that there are any articles in the server and if then displaying them at index page
+    //only users can see the link to update page and delete button
+    main
+      .container
+        form(method='POST' action='/search')
+            h1 Search items 
+            h4 Enter the name of the Item you are looking for
+            input(type='text' name='str' placeholder='name')
+            button(type='submit' value='Submit') Submit
+            if (articles && articles.length)
+                section
+                    each article in articles
+                        fieldset
+                            div
+                                if(!user)
+                                    p= "Name of product: "+article.name
+                                    p= "Description: "+article.description
+                                    p= "Price: $"+article.price
+                                else
+                                    p= "Name of product: "+article.name
+                                    p= "Description: "+article.description
+                                    p= "Price: $"+article.price
+                                    p
+                                        a(href='/update/'+article.id) Update
+                                    p
+                                        form(method='POST' action='/delete/'+article.id)
+                                            button(type='submit') Delete
+            else
+                h3 Article Not in Listing
+    
+    include footer

@@ -8,19 +8,22 @@ block content
           if (articles && articles.length)
             section
                 each article in articles
-                    div
-                        if(!user)
-                            p= "Name of product: "+article.name
-                            p= "Description: "+article.description
-                            p= "Price: $"+article.price
-                        else
-                            p= "Name of product: "+article.name
-                            p= "Description: "+article.description
-                            p= "Price: $"+article.price
-                            p
-                                a(href='/update/'+article.id) Update
-                            p
-                                form(method='POST' action='/delete/'+article.id)
-                                    button(type='submit') Delete
-    
+                    fieldset
+                        div
+                            if(!user)
+                                p= "Name of product: "+article.name
+                                p= "Description: "+article.description
+                                p= "Price: $"+article.price
+                            else
+                                p= "Name of product: "+article.name
+                                p= "Description: "+article.description
+                                p= "Price: $"+article.price
+                                p
+                                    a(href='/update/'+article.id) Update
+                                p
+                                    form(method='POST' action='/delete/'+article.id)
+                                        button(type='submit') Delete
+          else
+            h3 Currently There are no listings
+            h4 If you want to add Item, Register Now or Login if already a seller
     include footer
