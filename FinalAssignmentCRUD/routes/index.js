@@ -54,8 +54,8 @@ router.get('/login', function (req, res) {
 });
 
 /* GET Register page. */
-router.get('/Register', function (req, res) {
-    res.render('Register', { title: 'Register' });
+router.get('/register', function (req, res) {
+    res.render('register', { title: 'register' });
 }); 
 
 /* GET read page. */
